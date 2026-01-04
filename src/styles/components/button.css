@@ -1,5 +1,5 @@
 button {
-  @apply p-5 text-primary rounded-full 
+  @apply p-5 text-white rounded-full 
    cursor-pointer hover:bg-orange-950
     hover:text-secondary transition-colors
      ease-in-out duration-300;
