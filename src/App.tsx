@@ -5,9 +5,11 @@ import { useState } from 'react';
 function App() {
   const [result, setResult] = useState<number>();
   const [expression, setExpression] = useState('');
+
   function onExpressionChange(expression: string) {
     setExpression(expression);
   }
+
   function finalResult(result: string) {
     const output = evaluate(result);
     setResult(output);
@@ -15,7 +17,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="flex flex-col mt-30 items-center w-1/2 m-auto">
+      <div className="flex w-full flex-col mt-30 items-center m-auto">
         <Input result={result} expression={expression} />
         <Panel
           onExpressionChange={onExpressionChange}

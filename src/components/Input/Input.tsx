@@ -2,14 +2,14 @@ import type { InputProps } from './Types';
 
 const Input: React.FC<InputProps> = ({ result, expression }) => {
   return (
-    <div className="flex justify-center text-2xl w-1/4 items-center">
+    <div className="flex justify-center text-2xl w-fit items-center">
       <input
         id="input"
         name="input"
         type="text"
-        disabled
+        readOnly
         defaultValue={expression}
-        className="bg-black border-2 rounded-3xl border-primary w-fit p-5 focus:border-primary focus:outline-none active:border-primary"
+        className="bg-black border-2 rounded-3xl border-primary w-fit p-5 focus:border-primary focus:outline-none active:border-primary overflow-scroll"
       />
       <span className="ml-4 mr-4">=</span>
       <label className="bg-black border-2 rounded-3xl border-secondary w-fit p-5">
