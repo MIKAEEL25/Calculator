@@ -1,4 +1,4 @@
 export type InputProps = {
-  result: number | undefined;
+  result: string | undefined;
   expression: string;
 };

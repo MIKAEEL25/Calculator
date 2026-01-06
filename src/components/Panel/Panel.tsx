@@ -8,22 +8,41 @@ const Panel: React.FC<PanelProps> = ({ onExpressionChange, finalResult }) => {
   const [expression, setExpression] = useState('');
 
   function buttonClickHandler(value: number | string) {
-    if (value === 'AC') {
-      setExpression('');
-      finalResult('');
-    } else if (value === 'C') {
-      setExpression('');
-    } else if (value === '=') {
-      const output = evaluate(expression);
-      finalResult(String(output));
-    } else {
-      setExpression((prev) => prev + value);
+    try {
+      if (value === 'AC') {
+        setExpression('');
+        finalResult('');
+      } else if (value === 'C') {
+        setExpression('');
+      } else if (value === 'DEL') {
+        setExpression((prev) => {
+          if (prev.length === 0) return '';
+          return prev.slice(0, -1);
+        });
+      } else if (value === '=') {
+        const result = evaluate(expression);
+        if (typeof result === 'boolean') {
+          finalResult(result ? 'TRUE' : 'FALSE');
+        } else {
+          if (result > Number.MAX_SAFE_INTEGER) {
+            finalResult(String(BigInt(result)));
+          } else {
+            finalResult(String(result));
+          }
+        }
+      } else {
+        setExpression((prev) => prev + value);
+      }
+    } catch (error) {
+      if (error instanceof RangeError) {
+        finalResult('INFINITY');
+      }
     }
   }
   onExpressionChange(expression);
   return (
     <div className="flex justify-center-safe">
-      <div className="grid grid-cols-5 gap-3 p-5 h-9/12 text-3xl">
+      <div className="grid grid-cols-10 gap-3 p-5 h-9/12 text-3xl text-blue-800">
         {SCI_BUTTONS.map((btn) => (
           <Button
             key={btn.label}

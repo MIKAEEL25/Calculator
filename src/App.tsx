@@ -1,9 +1,8 @@
 import { Header, Input, Panel } from '@/components';
-import { evaluate } from 'mathjs';
 import { useState } from 'react';
 
 function App() {
-  const [result, setResult] = useState<number>();
+  const [result, setResult] = useState<string>();
   const [expression, setExpression] = useState('');
 
   function onExpressionChange(expression: string) {
@@ -11,8 +10,7 @@ function App() {
   }
 
   function finalResult(result: string) {
-    const output = evaluate(result);
-    setResult(output);
+    setResult(result);
   }
   return (
     <>
