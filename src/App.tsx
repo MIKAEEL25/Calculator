@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="flex w-full flex-col mt-30 items-center m-auto">
+      <div className="flex w-full flex-col mt-10 lg:mt-20 items-center m-auto">
         <Input result={result} expression={expression} />
         <Panel
           onExpressionChange={onExpressionChange}

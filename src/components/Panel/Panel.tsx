@@ -41,8 +41,8 @@ const Panel: React.FC<PanelProps> = ({ onExpressionChange, finalResult }) => {
   }
   onExpressionChange(expression);
   return (
-    <div className="flex justify-center-safe">
-      <div className="grid grid-cols-10 gap-3 p-5 h-9/12 text-3xl text-blue-800">
+    <div className="flex flex-col-reverse xl:flex-row xl:justify-center-safe mt-5">
+      <div className="grid grid-cols-5 lg:grid-cols-10 gap-1 h-9/12 text-blue-700 xl:text-2xl xl:p-5 2xl:text-3xl">
         {SCI_BUTTONS.map((btn) => (
           <Button
             key={btn.label}
@@ -53,7 +53,7 @@ const Panel: React.FC<PanelProps> = ({ onExpressionChange, finalResult }) => {
           />
         ))}
       </div>
-      <div className="grid grid-cols-4 gap-3 p-5 h-9/12 text-4xl">
+      <div className="grid grid-cols-4 gap-3 p-5 h-9/12 w-fit mx-auto text-4xl">
         {MAIN_BUTTONS.map((btn) => (
           <Button
             key={btn.label}
